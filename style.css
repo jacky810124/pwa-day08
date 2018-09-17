@@ -1,0 +1,56 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.container {
+  max-width: 1200px;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-profile {
+  padding: 32px 16px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.user-profile__avator>img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.user-profile__description {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.user-profile__description>p {
+  margin: 0;
+  width: 200px;
+  color: #555;
+  text-align: center;
+}
+.user-profile__subscribe-button {
+  padding: 8px 16px;
+  background-color: #f79370;
+  color: white;
+  border-radius: 4px;
+  border: unset;
+}
+.user-profile__subscribe-button:active {
+  background-color: #d47d5e;
+}
+.user-profile__subscribe-button:disabled {
+  opacity: 0.7;
+}
