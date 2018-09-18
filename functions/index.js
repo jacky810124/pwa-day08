@@ -1,8 +1,15 @@
-const functions = require('firebase-functions');
+const functions = require('firebase-functions')
+const admin = require('firebase-admin')
+const express = require('express')
+const cors = require('cors')
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+admin.initializeApp({
+  databaseURL: 'https://pwa-day08.firebaseio.com/'
+})
+
+const db = admin.database()
+const app = express()
+
+app.use(cors())
+
+exports['api'] = functions.https.onRequest(app)
