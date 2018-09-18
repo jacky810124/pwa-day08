@@ -45,8 +45,58 @@ const getSubscription = (registration) => {
 const saveSubscription = (subscription) => {
   // TODO: upload subscription data to server side
 }
+const requestSubscription = (registration) => {
+  const result = confirm('是否要訂閱 Jacky ？')
+
+  if (result) {
+    return registration
+      .pushManager
+      .subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlB64ToUint8Array(PUBLIC_KEY)
+      })
+  }
+
+  return Promise.reject(new Error('Failed to request push notification permission'))
+}
 const subscribe = () => {
-  // TODO: click event handler
+  let swRegistration
+
+  const subscribeButton = document.querySelector('.user-profile__subscribe-button')
+
+  navigator
+    .serviceWorker
+    .ready
+    .then(registration => {
+      swRegistration = registration
+
+      return getSubscription(registration)
+    })
+    .then(subscription => {
+      const isSubscribed = subscription !== null
+
+      if (isSubscribed) {
+        return subscription
+      }
+
+      return requestSubscription(swRegistration)
+    })
+    .then(subscription => saveSubscription(subscription))
+    .then(response => {
+      if (response.ok) {
+        alert('已訂閱')
+
+        subscribeButton.innerHTML = '已訂閱'
+        subscribeButton.disabled = true
+      } else {
+        alert(response.message)
+      }
+    })
+    .catch(error => {
+      subscribeButton.disabled = false
+
+      console.error('Failed to subscribe user ', error)
+    })
 }
 
 init()
