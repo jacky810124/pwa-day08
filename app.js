@@ -1,7 +1,7 @@
 const PUBLIC_KEY = 'BCDMOxYAhVUZY1cXwkXsKuKztlqfOXjowcriucykb5qBmFq-8lVMVx3bJbFOmLSci1Jq_SPqBdFeWGi0jcHJfXM'
 const NOTIFICATION_USABILITY = 'serviceWorker' in navigator && 'PushManager' in window
 const HAS_FINGERPRINT = !(localStorage.getItem('fingerprint') == null && localStorage.getItem('fingerprint') === '')
-const API_HOST = ''
+const API_HOST = 'https://us-central1-pwa-day08.cloudfunctions.net/api'
 
 /**
  * initialization function
